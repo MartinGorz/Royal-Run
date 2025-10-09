@@ -16,7 +16,7 @@ public class LevelGenerator : MonoBehaviour
     List<GameObject> chunks = new List<GameObject>();
     private void Start()
     {
-        SpawnChunks();
+        SpawnStartingChunks();
 
     }
 
@@ -26,14 +26,19 @@ public class LevelGenerator : MonoBehaviour
         MoveChunks();
     }
     // The main method that spawns chunks in the game.
-    void SpawnChunks()
+    void SpawnStartingChunks()
     {
         for (int i = 0; i < startingChunksAmount; i++)
         {
-            Vector3 chunkPosition = CalculateZPosition(i);
-            GameObject newChunk = Instantiate(chunkPrefab, chunkPosition, Quaternion.identity, chunkParent);
-            chunks.Add(newChunk);
+            SpawnChunks(i);
         }
+    }
+
+    private void SpawnChunks(int i)
+    {
+        Vector3 chunkPosition = CalculateZPosition(i);
+        GameObject newChunk = Instantiate(chunkPrefab, chunkPosition, Quaternion.identity, chunkParent);
+        chunks.Add(newChunk);
     }
 
     //To calcuate Z position for the chunks, so we can line them up infront of the player.
@@ -48,11 +53,21 @@ public class LevelGenerator : MonoBehaviour
         {
             GameObject chunk = chunks[i];
             chunks[i].transform.Translate(0, 0, -1 * (moveSpeed * Time.deltaTime));
-            if (chunk.transform.position.z <= Camera.main.transform.position.z - chunkLength)
-            {
-                chunks.Remove(chunk);
-                Destroy(chunk);
-            }
+            RemoveChunksBehind(chunk);
+            //if (chunks.Count < startingChunksAmount)
+            //{
+            //    SpawnChunks(chunks.Count-1);
+            //}
+        }
+    }
+
+    private void RemoveChunksBehind(GameObject chunk)
+    {
+        if (chunk.transform.position.z <= Camera.main.transform.position.z - chunkLength)
+        {
+            chunks.Remove(chunk);
+            Destroy(chunk);
+
         }
     }
 }
