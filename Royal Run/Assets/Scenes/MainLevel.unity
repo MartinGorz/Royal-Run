@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.25550175, g: 0.3526644, b: 0.38145334, a: 0.49204153}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: c56e28e54cac24b04ae3dd957d214534, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -131,6 +131,8 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585549}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -156,7 +158,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.39735302, g: 0.46529418, b: 0.52294123, a: 0.6}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -256,6 +258,86 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34bb5be94d27d04db5e7668c46eca45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sunTransform: {fileID: 0}
+  blockColor:
+    r: 0.5
+    g: 0.5
+    b: 0.5
+    a: 1
+  tintColor:
+    r: 1
+    g: 0.5
+    b: 0
+    a: 1
+  sunColor:
+    r: 1
+    g: 1
+    b: 1
+    a: 1
+  sunShaftDownsample: 1
+  sunShaftIntensity: 1.15
+  maxRadius: 0.7
+  useDepthTexture: 1
+  sunShaftsMaterial: {fileID: 0}
+  camComponent: {fileID: 330585545}
+  tempVec: {x: 1, y: 0.5, z: 0}
+  sunColorVec: {x: 0, y: 0, z: 0, w: 0}
+  radiusVec: {x: 0, y: 0, z: 0, w: 0}
+  shaftTintVec: {x: 0, y: 0, z: 0, w: 0}
+  sunPosVec: {x: 0, y: 0, z: 0, w: 0}
+  ofs: 0
+  rtW: 0
+  rtH: 0
+  it2: 0
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c429313ab7f9a428bd62057598aa53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useRadialDistance: 1
+  fogHorizon: 0
+  fogSkybox: 1
+  height: 185
+  heightDensity: 0.00325
+  fogColor:
+    r: 1
+    g: 1
+    b: 1
+    a: 1
+  distortTex: {fileID: 0}
+  heatSpd: 4
+  heatScale: 2
+  heatDistance: 0.01
+  fogShader: {fileID: 0}
+  fogMaterial: {fileID: 0}
+  fogRender: {fileID: 0}
+  cam: {fileID: 0}
+  heightVec: {x: 0, y: 0, z: 0, w: 0}
+  distanceVec: {x: -0, y: 0, z: 0, w: 0}
+  sceneParams: {x: 0, y: 0, z: 0, w: 0}
+  scenefogPosition: {x: 0, y: 0, z: 0, w: 0}
+  sceneMode: 0
+  sceneDensity: 0
+  tenkokuLib: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,6 +609,7 @@ MonoBehaviour:
   startingChunksAmount: 12
   chunkParent: {fileID: 914067343}
   chunkLength: 10
+  moveSpeed: 8
 --- !u!4 &1457627647
 Transform:
   m_ObjectHideFlags: 0
@@ -551,6 +634,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1741739970}
+  - component: {fileID: 1741739972}
+  - component: {fileID: 1741739971}
+  - component: {fileID: 1741739973}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -574,6 +660,92 @@ Transform:
   - {fileID: 1376114600}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1741739971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741739969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a5cd394748e0048b64a5d4774c6f7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+--- !u!114 &1741739972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741739969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 7818c3c4abef74146ba5b418026eb6d6, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1741739971}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4a8e2988-c17e-4d4d-972a-b31fd694e5f6
+    m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!54 &1741739973
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741739969}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2134780372
 PrefabInstance:
   m_ObjectHideFlags: 0

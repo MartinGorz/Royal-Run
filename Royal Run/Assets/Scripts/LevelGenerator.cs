@@ -30,11 +30,11 @@ public class LevelGenerator : MonoBehaviour
     {
         for (int i = 0; i < startingChunksAmount; i++)
         {
-            SpawnChunks(i);
+            SpawnChunksAlgorithm(i);
         }
     }
 
-    private void SpawnChunks(int i)
+    private void SpawnChunksAlgorithm(int i)
     {
         Vector3 chunkPosition = CalculateZPosition(i);
         GameObject newChunk = Instantiate(chunkPrefab, chunkPosition, Quaternion.identity, chunkParent);
@@ -54,10 +54,10 @@ public class LevelGenerator : MonoBehaviour
             GameObject chunk = chunks[i];
             chunks[i].transform.Translate(0, 0, -1 * (moveSpeed * Time.deltaTime));
             RemoveChunksBehind(chunk);
-            //if (chunks.Count < startingChunksAmount)
-            //{
-            //    SpawnChunks(chunks.Count-1);
-            //}
+            if (chunks.Count < startingChunksAmount)
+            {
+                SpawnChunksAlgorithm(chunks.Count-1);
+            }
         }
     }
 
