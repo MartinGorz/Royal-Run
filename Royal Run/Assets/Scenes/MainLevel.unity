@@ -724,6 +724,9 @@ MonoBehaviour:
   obstaclePrefabs:
   - {fileID: 2011010108287166220, guid: e83878dc085d26e49ad2d280e74d9ea5, type: 3}
   - {fileID: 4344523522588519972, guid: 9f8893efdbd9c9f48986b2021425dcc1, type: 3}
+  - {fileID: 8618761940594960516, guid: 31ed06aa7ec27a94ca4a6f2bb9d86feb, type: 3}
+  - {fileID: 1726091227599718490, guid: e2261ccc2e4c99e4c8745cf4bf715133, type: 3}
+  - {fileID: 1943311939200749383, guid: fc1bd6edb7132504c862a9ff73a8944f, type: 3}
   obstacleSpawnTime: 3
   obstacleParent: {fileID: 1923849440}
   spawnWidth: 4
