@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cb9b668eaadb648b1bf8dc0eaa7546, type: 3}
+  m_Name: CityGenSettings
+  m_EditorClassIdentifier: 
+  rows: 4
+  cols: 4
+  blockSize: 20
+  streetWidth: 4
+  buildingPrefab: {fileID: 8325836822813718710, guid: a0062740664fd81489fc6c0c1cb01bfb, type: 3}
+  buildingScaleRange: {x: 0.8, y: 1.4}
+  buildingsPerBlock: 6
+  seed: -605186771
+  randomizeSeed: 1
+  autoBuildNavMesh: 0

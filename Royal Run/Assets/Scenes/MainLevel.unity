@@ -270,37 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34bb5be94d27d04db5e7668c46eca45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sunTransform: {fileID: 0}
-  blockColor:
-    r: 0.5
-    g: 0.5
-    b: 0.5
-    a: 1
-  tintColor:
-    r: 1
-    g: 0.5
-    b: 0
-    a: 1
-  sunColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  sunShaftDownsample: 1
-  sunShaftIntensity: 1.15
-  maxRadius: 0.7
-  useDepthTexture: 1
-  sunShaftsMaterial: {fileID: 0}
-  camComponent: {fileID: 330585545}
-  tempVec: {x: 1, y: 0.5, z: 0}
-  sunColorVec: {x: 0, y: 0, z: 0, w: 0}
-  radiusVec: {x: 0, y: 0, z: 0, w: 0}
-  shaftTintVec: {x: 0, y: 0, z: 0, w: 0}
-  sunPosVec: {x: 0, y: 0, z: 0, w: 0}
-  ofs: 0
-  rtW: 0
-  rtH: 0
-  it2: 0
 --- !u!114 &330585549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,31 +282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c429313ab7f9a428bd62057598aa53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useRadialDistance: 1
-  fogHorizon: 0
-  fogSkybox: 1
-  height: 185
-  heightDensity: 0.00325
-  fogColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  distortTex: {fileID: 0}
-  heatSpd: 4
-  heatScale: 2
-  heatDistance: 0.01
-  fogShader: {fileID: 0}
-  fogMaterial: {fileID: 0}
-  fogRender: {fileID: 0}
-  cam: {fileID: 0}
-  heightVec: {x: 0, y: 0, z: 0, w: 0}
-  distanceVec: {x: -0, y: 0, z: 0, w: 0}
-  sceneParams: {x: 0, y: 0, z: 0, w: 0}
-  scenefogPosition: {x: 0, y: 0, z: 0, w: 0}
-  sceneMode: 0
-  sceneDensity: 0
-  tenkokuLib: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,6 +617,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  xClamp: 3
+  zClamp: 3
 --- !u!114 &1741739972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,6 +692,56 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1923849438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1923849440}
+  - component: {fileID: 1923849439}
+  m_Layer: 0
+  m_Name: Obstacle Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1923849439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923849438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5fa52090e23d424bb4c9004da0a09d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefabs:
+  - {fileID: 2011010108287166220, guid: e83878dc085d26e49ad2d280e74d9ea5, type: 3}
+  - {fileID: 4344523522588519972, guid: 9f8893efdbd9c9f48986b2021425dcc1, type: 3}
+  obstacleSpawnTime: 3
+  obstacleParent: {fileID: 1923849440}
+  spawnWidth: 4
+--- !u!4 &1923849440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923849438}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.24, y: 2, z: 37.82}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2134780372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -813,3 +809,4 @@ SceneRoots:
   - {fileID: 1741739970}
   - {fileID: 1457627647}
   - {fileID: 914067343}
+  - {fileID: 1923849440}
