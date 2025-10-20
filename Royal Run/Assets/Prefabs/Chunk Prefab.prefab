@@ -45,6 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03330e4bb44ffa4cb61e950611038fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fencePrefab: {fileID: 7118766520314966531, guid: c1362f958bcaa044785b81afe9693d19, type: 3}
+  lanes:
+  - -4
+  - -1.2
+  - 1.6
 --- !u!1 &1107620749550926668
 GameObject:
   m_ObjectHideFlags: 0
