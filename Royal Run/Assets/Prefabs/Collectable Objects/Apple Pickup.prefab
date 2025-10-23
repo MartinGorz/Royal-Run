@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
+  appleSpeedUp: 3
 --- !u!1 &7385824486968613193
 GameObject:
   m_ObjectHideFlags: 0
