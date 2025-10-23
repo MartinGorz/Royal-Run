@@ -11,7 +11,7 @@ public class Chunk : MonoBehaviour
     [SerializeField] float appleSpawnChance = 0.3f;
     [SerializeField] float coinSpawnChance = 0.5f;
     [SerializeField] float coinSeperationLength = 2f;
-
+    [SerializeField] float pickupOffset = 1f;
     [SerializeField] float[] lanes = { -4.19f, -1.94f, 0.72f };
      List<int> availableLanes = new List<int> { 0, 1, 2 };
 
@@ -48,7 +48,7 @@ public class Chunk : MonoBehaviour
 
         int selectedLane = SelectLane();
 
-        Vector3 spawnPosition = new Vector3(lanes[selectedLane], transform.position.y, transform.position.z);
+        Vector3 spawnPosition = new Vector3(lanes[selectedLane] + pickupOffset, transform.position.y, transform.position.z);
         Instantiate(applePrefab, spawnPosition, Quaternion.identity, this.transform);
     }
 
@@ -67,7 +67,7 @@ public class Chunk : MonoBehaviour
         {
 
         float spawnPositionZ = topOfChunkZPos - (i * coinSeperationLength);
-        Vector3 spawnPosition = new Vector3(lanes[selectedLane], transform.position.y, spawnPositionZ);
+        Vector3 spawnPosition = new Vector3(lanes[selectedLane] + pickupOffset, transform.position.y, spawnPositionZ);
         Instantiate(coinPrefab, spawnPosition, Quaternion.identity, this.transform);
             
         }

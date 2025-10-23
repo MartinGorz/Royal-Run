@@ -51,6 +51,7 @@ MonoBehaviour:
   appleSpawnChance: 0.3
   coinSpawnChance: 0.5
   coinSeperationLength: 2
+  pickupOffset: 1.13
   lanes:
   - -4
   - -1.2
