@@ -7,12 +7,14 @@ public class LevelGenerator : MonoBehaviour
 
     [Header("Refrences")]
     [SerializeField] CameraController cameraController;
-    [SerializeField] GameObject chunkPrefab;
+    [SerializeField] GameObject[] chunkPrefabs;
+    [SerializeField] GameObject checkpointChunkPrefab;
     [SerializeField] Transform chunkParent;
     [SerializeField] ScoreManager scoreManager;
 
     [Header("Level Settings")]
     [SerializeField] int startingChunksAmount = 12;
+    [SerializeField] int checkpointChunkInterval = 8;
     [Tooltip("Do not change chunklength value unless chunk prefab size reflects change.")]
     [SerializeField] float chunkLength = 10f;
     [SerializeField] float moveSpeed = 8f;
@@ -23,6 +25,7 @@ public class LevelGenerator : MonoBehaviour
 
     //The List that contains all 12 chunks
     List<GameObject> chunks = new List<GameObject>();
+    int chunksSpawned = 0;
     private void Start()
     {
         SpawnStartingChunks();
@@ -65,11 +68,29 @@ public class LevelGenerator : MonoBehaviour
     private void SpawnChunksAlgorithm(int i)
     {
         Vector3 chunkPosition = CalculateZPosition(i);
-        GameObject newChunkGO = Instantiate(chunkPrefab, chunkPosition, Quaternion.identity, chunkParent);
+        GameObject chunkToSpawn = ChooseChunkToSpawn();
+        GameObject newChunkGO = Instantiate(chunkToSpawn, chunkPosition, Quaternion.identity, chunkParent);
 
         chunks.Add(newChunkGO);
         Chunk newChunk = newChunkGO.GetComponent<Chunk>();
         newChunk.Init(this, scoreManager);
+        chunksSpawned++;
+    }
+
+    private GameObject ChooseChunkToSpawn()
+    {
+        GameObject chunkToSpawn;
+
+        if (chunksSpawned % checkpointChunkInterval == 0 && chunksSpawned != 0)
+        {
+            chunkToSpawn = checkpointChunkPrefab;
+        }
+        else
+        {
+            chunkToSpawn = chunkPrefabs[Random.Range(0, chunkPrefabs.Length)];
+        }
+
+        return chunkToSpawn;
     }
 
     //To calcuate Z position for the chunks, so we can line them up infront of the player.
